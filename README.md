@@ -4,7 +4,6 @@
 <!--[image1]: ./images/skin_disease_classes.png "Skin Disease Classes"-->
 [image1]: ./images/index.png "Lesion Images"
 
-# [Discontinued] Dermatologist AI
 
 ![Lesion Images][image1]
 

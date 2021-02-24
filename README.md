@@ -1,4 +1,5 @@
 # DERMATOLOGIST-AI
+
 [//]: # (Image References)
 
 <!--[image1]: ./images/skin_disease_classes.png "Skin Disease Classes"-->

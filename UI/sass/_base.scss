@@ -1,0 +1,46 @@
+// COLOR VARIABLES
+$color-primary: #86C64D;
+$color-primary-dark: #568b27;
+
+$color-secondary: #005298;
+
+$color-blue-light-1: #00A4E0;
+$color-blue-light-2: #24bbf1;
+
+$color-grey-dark-1: #54483A;
+$color-grey-dark-2: #6D5D4B;
+
+// FONT VARIABLES
+$font-display: 'Josefin Sans',
+sans-serif;
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+    font-family: $font-display;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [sidebar-start]8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, 
+    [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr)[full-end];
+
+
+
+}

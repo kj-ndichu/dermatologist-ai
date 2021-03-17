@@ -1,5 +1,5 @@
 %heading {
-    font-family: $font-display;
+    font-family: 'Lato', sans-serif;
     font-weight: 700;
 }
 
@@ -8,7 +8,6 @@
 
     font-size: 4.5rem;
     font-weight: 600;
-    text-transform: uppercase;
     background-image: linear-gradient(to right,$color-blue-light-1, $color-blue-light-2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

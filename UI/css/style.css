@@ -21,13 +21,12 @@ body {
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
 
 .heading-1, .heading-2, .heading-3, .heading-4 {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 700; }
 
 .heading-1 {
   font-size: 4.5rem;
   font-weight: 600;
-  text-transform: uppercase;
   background-image: linear-gradient(to right, #00A4E0, #24bbf1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -81,14 +80,13 @@ body {
   margin-bottom: 8rem; }
 
 .header {
-  height: 95vh;
+  height: 85vh;
   background-color: #f7f7f7;
   grid-column: full-start / full-end;
-  padding: 8rem;
+  padding: 4rem 8rem 0 8rem;
   padding-top: 4rem;
   display: grid;
-  grid-template-rows: min-content 1fr;
-  grid-row-gap: 1.5rem; }
+  grid-template-rows: min-content 1fr; }
   .header__heading {
     text-align: center; }
   .header__logic {
@@ -152,7 +150,7 @@ body {
 
 .copyright {
   font-size: 1.4rem;
-  color: #000;
+  color: #fff;
   margin-top: 6rem;
   margin-right: auto;
   margin-left: auto;

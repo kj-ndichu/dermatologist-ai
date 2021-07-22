@@ -39,18 +39,3 @@ The problem being addressed here apart from visually dignosing the malignant ski
 
 4. All training was done on CPU.
 
-## Technologies Used
-
-### Hardware
-
-1. Intel® Core™ i5-3320M CPU @ 2.60GHz × 4  Processor
-
-2. Intel® Ivybridge Mobile Graphics
-
-### Software and Libraries
-
-1. Ubuntu 18.04.3 LTS
-
-2. Python 3.6.9
-
-3. Power by the PyTorch Deep Learning Framework

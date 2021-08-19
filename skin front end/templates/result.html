@@ -1,103 +1,88 @@
-{% load static  %}
-<html>
-
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.0/css/mdb.min.css" rel="stylesheet">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
     <style>
-        body {
-            background-image: url("{% static  'retina.jpg' %}");
-            background-size: 100% auto;
+       .form-container {
+          margin-top: 5rem;
+          display: grid;
+          justify-items: center;
+          height: 100vh;
+
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: 5rem 1fr;
+
+          background-color: #f7f7f7;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+          grid-column: 2 / 4;
+          grid-row: 2 / 4;
+          border-radius: 10px;
         }
-
-        .card {
-            width: 800px;
-            transform: translate(-50%);
-            margin-top: 3%;
-            left: 50%;
-            background-color: rgba(124, 162, 167, 0.7);
-
+        h2{
+          font-size: 3rem;
+          font-weight: 700;
         }
-
-        
+        h3{
+          font-size: 2rem;
+        }
+        p{
+          font-size: 2rem;
+          font-weight: bold;
+        }
     </style>
-</head>
-
-<body>
-
-    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
-        <a class="navbar-brand" href="#">SKIN CANCER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'dashboard' %}">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto nav-flex-icons">
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light">
-                        <i class="fas fa-user"></i>{{name}}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="{% url 'logout' %}">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="card hoverable p-4">
-            <span class="badge badge-primary" style="margin-left:-3%;width: 800px;height:60px;">
-                <h1 style="text-align: center;">RESULT</h1>
-            </span>
-            <div class="row" style="width: 100%;">
-                <div style="margin-left: 0%;text-align:center">
-                    <h2 style="font-weight: bold;margin-left:0%;margin-top:5%;text-align:center;">{{result}}</h2><br>
-                    <h2 style="font-weight: bold;margin-left:0%;margin-top:-2%;text-align:center;">{{description}}</h2><br>
-                    <h3 style="font-weight: bold;margin-left:0%;margin-top:5%;text-align:center;">Your input image is :</h3>
-                    <img style="height: 300px;width: 400px;" src="{% static 'img/result.jpg' %}" />
-                    <h3><a href="{% url 'dashboard' %}" style="margin-left:0%;color:black;font-style:bold;"><i
-                                class="far fa-arrow-alt-circle-left" style="margin-top:4%;"></i>Back</a></h3>
-                </div>
-            </div><br><br>
-        </div>
-
-
+  </head>
+  <body class="container">
+    <div class="header">
+      <div class="brand-container">
+        <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
+      </div>
+      <div class="profile-container">
+        <li class="mr-md">
+          <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}">
+            Logout
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
+      </div>
     </div>
-
-
-
-
-
-
-
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.0/js/mdb.min.js"></script>
-
-
-</body>
-
+    <div class="form-container">
+      <div class="gen-header">
+        <h1>result</h1>
+      </div>
+      <div class='gen-form'>
+          <h2 class="mt-lg">{{result}}</h2>
+          <br/>
+          <p>{{description}}</p>
+          <br />
+          <h3>Your input image is :</h3>
+          <img
+            style="height: 300px; width: 400px"
+            src="{% static 'img/result.jpg' %}"
+          />
+          <button class="btn mb-sm mt-lg">
+            <a href="{% url 'dashboard' %}"
+              ><i class="far fa-arrow-alt-circle-left"></i>Back</a
+            >
+          </button>
+        </div>
+    </div>
+    </div>
+  </body>
 </html>

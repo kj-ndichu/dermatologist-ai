@@ -1,88 +1,100 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Result</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
-    <style>
-       .form-container {
-          margin-top: 5rem;
-          display: grid;
-          justify-items: center;
-          height: 100vh;
 
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: 5rem 1fr;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+  <style>
+    .form-container {
+      margin-top: 5rem;
+      display: grid;
+      justify-items: center;
+      height: 110vh;
 
-          background-color: #f7f7f7;
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-          grid-column: 2 / 4;
-          grid-row: 2 / 4;
-          border-radius: 10px;
-        }
-        h2{
-          font-size: 3rem;
-          font-weight: 700;
-        }
-        h3{
-          font-size: 2rem;
-        }
-        p{
-          font-size: 2rem;
-          font-weight: bold;
-        }
-    </style>
-  </head>
-  <body class="container">
-    <div class="header">
-      <div class="brand-container">
-        <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
-      </div>
-      <div class="profile-container">
-        <li class="mr-md">
-          <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
-        </li>
-        <li>
-          <a href="{% url 'logout' %}">
-            Logout
-            <i class="fas fa-sign-out-alt"></i>
-          </a>
-        </li>
-      </div>
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 5rem 1fr;
+
+      background-color: #f7f7f7;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+      grid-column: 2 / 4;
+      grid-row: 2 / 4;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <div class="header" id="header">
+    <div class="brand-container">
+      <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
     </div>
-    <div class="form-container">
-      <div class="gen-header">
-        <h1>result</h1>
-      </div>
-      <div class='gen-form'>
-          <h2 class="mt-lg">{{result}}</h2>
-          <br/>
-          <p>{{description}}</p>
-          <br />
-          <h3>Your input image is :</h3>
-          <img
-            style="height: 300px; width: 400px"
-            src="{% static 'img/result.jpg' %}"
-          />
-          <button class="btn mb-sm mt-lg">
-            <a href="{% url 'dashboard' %}"
-              ><i class="far fa-arrow-alt-circle-left"></i>Back</a
-            >
-          </button>
-        </div>
+    <div class="profile-container">
+      <li class="mr-md">
+        <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">
+          Logout
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
     </div>
+  </div>
+  <div class="form-container">
+    <div class="gen-header">
+      <h1>result</h1>
     </div>
-  </body>
+    <div class='gen-form'>
+      <h2 class="mt-lg">{{result}}</h2>
+      <br />
+      <p>{{description}}</p>
+      <br />
+      <h3>Your input image is :</h3>
+      <img style="height: 300px; width: 400px" src="{% static 'img/result.jpg' %}" />
+      <button class="btn mb-sm mt-lg">
+        <a href="{% url 'dashboard' %}"><i class="far fa-arrow-alt-circle-left"> &nbsp; </i>Back</a>
+      </button>
+    </div>
+  </div>
+  </div>
+
+
+  <script>
+
+    const header = document.getElementById('header')
+
+    window.onscroll = function () { scroll() };
+    let sticky = header.offsetTop;
+    function scroll() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+  </script>
+</body>
+
 </html>

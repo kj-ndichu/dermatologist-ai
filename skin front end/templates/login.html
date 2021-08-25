@@ -1,55 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
-  </head>
-  <body class="container">
-    <div class="logo">
-      <img src="{% static  'logo.png' %}" alt="logo" />
-    </div>
-    <div class="form-container">
-      <a href="http://127.0.0.1:8000"><h2 class="login">Login</h2></a>
-      <a href="{% url 'register' %}"><h2 class="register">Register</h2></a>
-      <div class="form-div">
-        <div class="icons">
-          <i class="fas fa-envelope prefix mb-lg"></i>
-          <i class="fas fa-key prefix mb-hg"></i>
-        </div>
-        <form class="form" method="post" action="{% url 'login' %}">
-          <input
-            name="email"
-            class="mb-sm"
-            type="email"
-            pattern="[^ @]*@[^ @]*"
-            placeholder="email"
-            required
-          />
-          <input
-            name="password"
-            class="mb-sm"
-            type="password"
-            placeholder="password"
-            required
-          />
-          <button type="submit" class="mb-sm btn">
-            login <i class="fas fa-sign-in-alt prefix"></i>
-          </button>
-        </form>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+</head>
+
+<body class="container">
+  <div class="logo">
+    <img src="{% static  'logo.png' %}" alt="logo" />
+  </div>
+  <div class="form-container">
+    <a href="http://127.0.0.1:8000">
+      <h2 class="login">Login</h2>
+    </a>
+    <a href="{% url 'register' %}">
+      <h2 class="register">Register</h2>
+    </a>
+    <div class="form-div">
+      <div class="icons">
+        <i class="fas fa-user prefix mb-lg"></i>
+        <i class="fas fa-key prefix mb-hg"></i>
       </div>
+      <form class="form" method="post" action="{% url 'login' %}">
+        <input name="email" class="mb-sm" type="email" pattern="[^ @]*@[^ @]*" placeholder="email" required />
+        <input name="password" class="mb-sm" type="password" placeholder="password" required />
+        <button type="submit" class="mb-sm btn">
+          login <i class="fas fa-sign-in-alt prefix"></i>
+        </button>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

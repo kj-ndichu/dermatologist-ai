@@ -1,64 +1,113 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
 
-    <style>
-      body {
-        background-image: linear-gradient(
-            rgba(107, 201, 230, 0.5),
-            rgba(255, 255, 255, 0.5)
-          ),
-          url("{% static  'retina1.jpg' %}");
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+
+  <style>
+    body {
+      background-image: linear-gradient(rgba(107, 201, 230, 0.5),
+        rgba(255, 255, 255, 0.5)),
+      url("{% static  'retina1.jpg' %}");
+    }
+
+    .form-container {
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <div class="header" id="header">
+    <div class="brand-container">
+      <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
+    </div>
+    <div class="profile-container">
+      <li class="mr-md">
+        <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">
+          Logout
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+    </div>
+  </div>
+  <div id="form-container" class="form-container">
+    <div class="gen-header mb-sm">
+      <h1>skin cancer detection</h1>
+    </div>
+    <form class="gen-form" action="{% url 'submit' %}" method="POST" enctype="multipart/form-data">
+      <label for="file" class="btn-upload"> &nbsp; <i class="fas fa-cloud-upload-alt"></i> &nbsp; upload image</label>
+      <input type="file" class="file" id="file" style="display: none" name="image" />
+      <div class="image-preview" id="imagePreview">
+        <img src="" alt="" class="image-preview--image">
+        <span id="previewText" class="image-preview--text">No file chosen</span>
+      </div>
+      <label style="text-align: center; font-weight: 700;" for="submit" class="btn submit"><i class="fas fa-lens"></i>
+        scan</label>
+      <input class="btn mb-sm" id="submit" type="submit" style="display: none" value="Submit" />
+    </form>
+  </div>
+
+  <script>
+    const header = document.getElementById('header')
+    const formContainer = document.getElementById('form-container')
+    const inpFile = formContainer.querySelector('.file')
+    const imagePreview = formContainer.querySelector('.image-preview')
+    const image = imagePreview.querySelector('.image-preview--image')
+    const text = imagePreview.querySelector('.image-preview--text')
+    const submit = formContainer.querySelector('.submit')
+
+    const file = null;
+    if (!file) {
+      submit.style.display = 'none'
+      formContainer.style.height = '70vh'
+    }
+
+    //file upload
+    inpFile.addEventListener('change', function () {
+
+      const file = this.files[0]
+
+      if (file) {
+        const reader = new FileReader()
+        text.style.display = 'none';
+        image.style.display = 'block';
+        submit.style.display = '';
+        formContainer.style.height = '90vh'
+
+
+        reader.addEventListener('load', function () {
+          imagePreview.setAttribute('src', this.result)
+          console.log(this.result)
+        })
+
+        reader.readAsDataURL(file)
       }
-    </style>
-  </head>
-  <body class="container">
-    <div class="header">
-      <div class="brand-container">
-        <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
-      </div>
-      <div class="profile-container">
-        <li class="mr-md">
-          <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
-        </li>
-        <li>
-          <a href="{% url 'logout' %}">
-            Logout
-            <i class="fas fa-sign-out-alt"></i>
-          </a>
-        </li>
-      </div>
-    </div>
-    <div class="form-container">
-      <div class="gen-header">
-        <h1>skin cancer detection</h1>
-      </div>
-      <form
-        class="gen-form"
-        action="{% url 'submit' %}"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <div class="mb-sm btn">
-          <input type="file" name="image" />
-        </div>
-        <input class="btn mb-sm" id="submit" type="submit" value="Submit" />
-      </form>
-    </div>
-  </body>
+    })
+
+    //stcky header
+    window.onscroll = function () { scroll() };
+    let sticky = header.offsetTop;
+    function scroll() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+  </script>
+</body>
+
 </html>

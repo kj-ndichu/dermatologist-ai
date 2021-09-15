@@ -51,7 +51,7 @@ input:focus::placeholder {
 
 .container {
   display: grid;
-  grid-template-rows: 20vh 70vh 40vh;
+  grid-template-rows: 20vh 70vh 60vh;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -177,7 +177,7 @@ input:focus::placeholder {
   text-align: center;
 }
 
-.btn-upload{
+.btn-upload {
   width: 30%;
   background: #44d681;
   color: #fff;
@@ -212,7 +212,7 @@ input:focus::placeholder {
   background-color: #b28451;
 }
 
-.image-preview{
+.image-preview {
   width: 400px;
   height: 200px;
   border: solid 2px rgb(175, 167, 167);
@@ -223,21 +223,21 @@ input:focus::placeholder {
   font-size: 2rem;
   color: rgb(151, 142, 142);
 }
-#previewImg{
+#previewImg {
   width: 100%;
 }
-#previewText{
+#previewText {
 }
-.submit{}
+.submit {
+}
 
-.sticky{
+.sticky {
   position: fixed;
   top: 0;
   width: 100%;
   height: 20vh;
   backface-visibility: hidden;
-  transition: all .2;
-
+  transition: all 0.2;
 }
 
 .mb-sm {
@@ -259,9 +259,53 @@ input:focus::placeholder {
   margin-right: 3rem;
 }
 
-.mt-lg{
+.mt-lg {
   margin-top: 4rem;
 }
-.mt-sm{
+.mt-sm {
   margin-top: 2rem;
+}
+
+/* footer */
+.footer {
+  background-color: #333;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  padding: 8rem;
+  margin-top: 20rem;
+}
+
+.nav {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+  align-items: center;
+}
+.nav__link:link,
+.nav__link:visited {
+  font-size: 1.4rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.5rem;
+  display: block;
+  transition: all 0.2s;
+}
+.nav__link:hover,
+.nav__link:active {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: #aaa;
+  margin-top: 6rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  width: 70%;
 }

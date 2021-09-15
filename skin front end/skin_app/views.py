@@ -28,9 +28,9 @@ def register(request):
 def submit(request):
     if request.method == "POST":
         image = request.FILES['image']
-        shutil.rmtree(os.getcwd()+'\\static\\img')
+        shutil.rmtree(os.getcwd()+'//static//img')
         path = default_storage.save(
-            os.getcwd()+'\\static\\img\\result.jpg', ContentFile(image.read()))
+            os.getcwd()+'//static//img//result.jpg', ContentFile(image.read()))
         tmp_file = os.path.join(settings.MEDIA_ROOT, path)
         result = predict.process()
         result = result.split('/')

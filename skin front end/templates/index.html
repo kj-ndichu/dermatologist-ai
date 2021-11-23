@@ -98,10 +98,18 @@
     <footer class="footer">
       <ul class="nav">
         <li class="nav__item">
-          <a href="" class="nav__link">Melanoma</a>
+          <a
+            href="https://www.cancer.org/cancer/melanoma-skin-cancer/about/what-is-melanoma.html"
+            class="nav__link"
+            >Melanoma</a
+          >
         </li>
         <li class="nav__item">
-          <a href="" class="nav__link">basal cell carcinoma</a>
+          <a
+            href="https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
+            class="nav__link"
+            >basal cell carcinoma</a
+          >
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">Naevus</a>
@@ -140,8 +148,8 @@
           formContainer.style.marginBottom = "3rem";
 
           reader.addEventListener("load", function () {
-            imagePreview.setAttribute("src", this.result);
-            console.log(this.result);
+            image.setAttribute("src", this.result);
+            image.style.width = "100%";
           });
 
           reader.readAsDataURL(file);

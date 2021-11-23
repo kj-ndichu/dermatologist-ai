@@ -43,9 +43,9 @@ def process():
 
     n = labels[ans[0]]
     if n == 'melanoma':
-        return 'Melanoma/Melanoma is a serious form of skin cancer that begins in cells known as melanocytes. While it is less common than basal cell carcinoma (BCC) and squamous cell carcinoma (SCC), melanoma is far more dangerous because of its ability to spread to other organs more rapidly if it not treated at an early stage.'
+        return 'Your skin cancer category is Melanoma/Melanoma is a serious form of skin cancer that begins in cells known as melanocytes. While it is less common than basal cell carcinoma (BCC) and squamous cell carcinoma (SCC), melanoma is far more dangerous because of its ability to spread to other organs more rapidly if it not treated at an early stage. /fsf'
     elif n == 'naevus':
-        return 'Nevus/Nevus (or nevi if multiple) is a nonspecific medical term for a visible, circumscribed, chronic lesion of the skin or mucosa. The term originates from nævus, which is Latin for "birthmark"; however, a nevus can be either congenital (present at birth) or acquired.'
+        return 'Your skin cancer category is Nevus/Nevus (or nevi if multiple) is a nonspecific medical term for a visible, circumscribed, chronic lesion of the skin or mucosa. The term originates from nævus, which is Latin for "birthmark"; however, a nevus can be either congenital (present at birth) or acquired.'
     elif n == 'basal cell carcinoma':
         return 'Basal cell carcinoma/Basal cells produce new skin cells as old ones die. Limiting sun exposure can help prevent these cells from becoming cancerous.'
     return 'Error/ Bad input !'

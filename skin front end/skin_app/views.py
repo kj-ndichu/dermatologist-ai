@@ -6,8 +6,7 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from skin_app import predict
-import pandas as pd
+from . import predict
 
 
 @csrf_exempt

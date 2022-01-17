@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class IrisAppConfig(AppConfig):
-    name = 'iris_app'
+class SkinAppConfig(AppConfig):
+    name = 'skin_app'

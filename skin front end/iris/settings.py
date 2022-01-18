@@ -25,7 +25,7 @@ SECRET_KEY = 'hd2*!0ak&ti-%0rju-2tmt9fdh6%jyc@%r73+n-i*2)8*xw1@k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://dermatologist.herokuapp.com/',]
 
 
 # Application definition

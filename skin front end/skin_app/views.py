@@ -7,20 +7,29 @@ from django.core.files.base import ContentFile
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from . import predict
+from .forms import UserRegisterForm
+from django.contrib import messages
 
 
-@csrf_exempt
 def home(request):
 
     if request.method == "GET":
         return render(request, 'login.html')
 
 
-@csrf_exempt
 def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(
+                request, f'Hi {username}, your account was created successfully!')
+            return redirect('skin_app:login')
+    else:
+        form = UserRegisterForm()
 
-    if request.method == "GET":
-        return render(request, 'register.html')
+    return render(request, 'register.html', {'form': form})
 
 
 @csrf_exempt
@@ -39,73 +48,10 @@ def submit(request):
         return render(request, 'result.html', {"result": result[0], 'name': name, 'description': result[1]})
 
 
-@csrf_exempt
-def signup(request):
-    if request.method == 'POST':
-        print("inside signup")
-        fullname = request.POST.get('fullname')
-        print(fullname)
-        email = request.POST.get('email')
-        print(email)
-        password = request.POST.get('password')
-        print(password)
-        cpass = request.POST.get('cpass')
-        print(cpass)
-        if password != cpass:
-            easygui.msgbox("The two password does not match", title="Error")
-            return redirect('http://127.0.0.1:8000')
-        else:
-            print("inside database")
-            file = open(os.path.dirname(__file__)+'/database.csv', 'a')
-            file.write(fullname+","+email+","+password+"\n")
-            file.close()
-            print("done writing")
-            # easygui.msgbox("Successfully registered", title="Success")
-            return redirect('http://127.0.0.1:8000')
-
-
-@csrf_exempt
-def login(request):
-    if request.method == 'POST':
-        print("inside login")
-        email = request.POST.get('email')
-        print(email)
-        password = request.POST.get('password')
-        print(password)
-
-        flag = False
-
-        with open(os.path.dirname(__file__)+'/database.csv', 'r') as file:
-            for line in file:
-                line = line.rstrip()
-                line = line.split(",")
-                print(line)
-                if line[1] == email and line[2] == password:
-                    f = open(os.path.dirname(__file__)+"/session.txt", "w+")
-                    f.write(line[0])
-                    f.close()
-                    flag = True
-
-        if(flag):
-            f = open(os.path.dirname(__file__)+"/session.txt", "r+")
-            name = f.read()
-            f.close()
-            return render(request, 'index.html', {"name": name})
-        else:
-            easygui.msgbox("Incorrect Username or password", title="Error")
-            return redirect('http://127.0.0.1:8000')
-
-
-@csrf_exempt
-def logout(request):
-    if request.method == 'GET':
-        return redirect('http://127.0.0.1:8000')
-
-
-@csrf_exempt
 def dashboard(request):
     if request.method == 'GET':
-        f = open(os.path.dirname(__file__)+"/session.txt", "r+")
-        name = f.read()
-        f.close()
-        return render(request, 'index.html', {"name": name})
+        return render(request, 'index.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')

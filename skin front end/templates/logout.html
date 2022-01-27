@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>logged out!</title>
+{% endblock %} {% block content %} {% if request.user %}
+<h2>Oops! You don't have an active session.</h2>
+<a href="{% url 'skin_app:login' %}">Login</a>
+
+{% endif %} {% endblock %}

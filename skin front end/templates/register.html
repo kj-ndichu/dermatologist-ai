@@ -1,48 +1,69 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>register</title>
+{% endblock %} {% block content %}
+<style>
+  .app-container {
+    background-image: url("{% static 'skin_app/img/profilelockscreen.png' %}");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20%;
+  }
+</style>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<form action="" method="POST" class="form">
+  {% csrf_token %}
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet" />
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
-</head>
+  <label for="username">
+    Username:
+    <input type="text" name="username" id="username" class="form-input" />
+    <br />
+    <span class="helptext"
+      >Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+      only.</span
+    >
+  </label>
+  <label for="email">
+    Email Add:
+    <input type="email" name="email" id="email" class="form-input" />
+  </label>
+  <label for="password">
+    Password:
+    <input
+      type="password"
+      name="password1"
+      id="password"
+      autocomplete="new-password"
+      class="form-input"
+    />
+    <br />
+    <span class="helptext">
+      <ul>
+        <li>
+          Your password can’t be too similar to your other personal information.
+        </li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+    </span>
+  </label>
+  <label for="confirm_password">
+    Password:
+    <input
+      type="password"
+      name="password2"
+      id="confirm_password"
+      autocomplete="new-password"
+      class="form-input"
+    />
+    <br />
+    <span class="helptext"
+      >Enter the same password as before, for verification.</span
+    >
+  </label>
+  <button class="btn">Sign Up</button>
+</form>
 
-<body class="container">
-  <div class="logo">
-    <img src="{% static  'logo.png' %}" alt="" />
-  </div>
-  <div class="form-container">
-    <a href="http://127.0.0.1:8000">
-      <h2 class="register">Login</h2>
-    </a>
-    <a href="{% url 'register' %}">
-      <h2 class="login">Register</h2>
-    </a>
-    <div class="form-div">
-      <div class="icons">
-        <i class="fas fa-user prefix mb-lg"></i>
-        <i class="fas fa-envelope prefix mb-lg"></i>
-        <i class="fas fa-lock prefix mb-lg"></i>
-        <i class="fas fa-lock prefix mb-hg"></i>
-      </div>
-      <form class="form" method="post" action="{% url 'signup' %}">
-        <input name="fullname" class="mb-sm" type="text" placeholder="name" required />
-        <input name="email" class="mb-sm" type="email" pattern="[^ @]*@[^ @]*" placeholder="email" required />
-        <input name="password" class="mb-sm" type="password" placeholder="password" required />
-        <input name="cpass" class="mb-sm" type="password" placeholder="confirm password" required />
-        <button type="submit" class="mb-sm btn">
-          Sign In <i class="fas fa-sign-in-alt prefix"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-</body>
+<h4>Back to <a href="{% url 'skin_app:login' %}">Sign In</a></h4>
 
-</html>
+{% endblock %}

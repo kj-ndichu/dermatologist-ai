@@ -1,43 +1,31 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>login</title>
+{% endblock %} {% block content %}
+<style>
+  .app-container {
+    background-image: url("{% static 'skin_app/img/doctor.png' %}");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20%;
+  }
+</style>
+<form action="" method="post" class="form">
+  {% csrf_token %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet" />
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
-</head>
-
-<body class="container">
-  <div class="logo">
-    <img src="{% static  'logo.png' %}" alt="logo" />
-  </div>
-  <div class="form-container">
-    <a href="http://127.0.0.1:8000">
-      <h2 class="login">Login</h2>
-    </a>
-    <a href="{% url 'register' %}">
-      <h2 class="register">Register</h2>
-    </a>
-    <div class="form-div">
-      <div class="icons">
-        <i class="fas fa-user prefix mb-lg"></i>
-        <i class="fas fa-key prefix mb-hg"></i>
-      </div>
-      <form class="form" method="post" action="{% url 'login' %}">
-        <input name="email" class="mb-sm" type="email" pattern="[^ @]*@[^ @]*" placeholder="email" required />
-        <input name="password" class="mb-sm" type="password" placeholder="password" required />
-        <button type="submit" class="mb-sm btn">
-          login <i class="fas fa-sign-in-alt prefix"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-</body>
-
-</html>
+  <label for="username">
+    Username:
+    <input type="text" name="username" id="username" class="form-input" />
+  </label>
+  <label for="password">
+    Password:
+    <input type="password" name="password" id="password" class="form-input" />
+  </label>
+  <button style="margin-top: 30px" class="btn login" type="submit">
+    login
+  </button>
+</form>
+<h4>
+  Don't have an account? Create one
+  <a href="{% url 'skin_app:register'%}" class="registerbtn">here</a>
+</h4>
+{% endblock %}

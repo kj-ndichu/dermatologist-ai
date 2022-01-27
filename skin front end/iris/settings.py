@@ -25,7 +25,7 @@ SECRET_KEY = 'hd2*!0ak&ti-%0rju-2tmt9fdh6%jyc@%r73+n-i*2)8*xw1@k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://dermatologist.herokuapp.com/',]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -55,8 +55,9 @@ ROOT_URLCONF = 'iris.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates'],
         'APP_DIRS': True,
+        # adding a base template globally
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -125,3 +126,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = 'skin_app:dashboard'
+LOGOUT_REDIRECT_URL = 'skin_app:login'

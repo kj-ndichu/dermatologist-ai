@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>profile</title>
+{% endblock %} {% block content %} {% if user.is_authenticated %}
+<h3>Name: {{user.username}}</h3>
+<h3>email: {{user.email}}</h3>
+
+<a href="{% url 'skin_app:dashboard'%}" class="registerbtn">Dashboard</a>
+{% else %}
+
+<h2>Make sure you login</h2>
+<a href="{% url 'skin_app:login' %}">here</a>
+{% endif %} {% endblock %}

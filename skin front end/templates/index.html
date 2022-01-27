@@ -1,173 +1,133 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700,400,400i|Nunito:300,300i"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       rel="shortcut icon"
       type="image/png"
       href="{% static 'favicon.ico' %}"
     />
 
-    <style>
-      body {
-        background-image: linear-gradient(
-            rgba(107, 201, 230, 0.5),
-            rgba(255, 255, 255, 0.5)
-          ),
-          url("{% static  'retina1.jpg' %}");
-      }
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <title>Dashboard</title>
 
-      .form-container {
-        height: 80vh;
+    <style>
+      #form-container {
+        background-image: linear-gradient(
+            rgba(230, 230, 230, 0.8),
+            rgba(255, 255, 255, 0.8)
+          ),
+          url("{% static 'retina1.jpg' %}");
+        background-position: center;
+        background-size: cover;
       }
     </style>
   </head>
 
-  <body class="container">
-    <div class="header" id="header">
-      <div class="brand-container">
-        <a href="#"> <img src="{% static  'logo-home.png' %}" alt="logo" /></a>
-      </div>
-      <div class="profile-container">
-        <li class="mr-md">
-          <a class=""> <i class="fas fa-user mb"></i> {{name}} </a>
-        </li>
-        <li>
-          <a href="{% url 'logout' %}">
-            Logout
-            <i class="fas fa-sign-out-alt"></i>
-          </a>
-        </li>
-      </div>
-    </div>
-    <div id="form-container" class="form-container">
-      <div class="gen-header mb-sm">
-        <h1>skin cancer detection</h1>
-      </div>
-      <form
-        class="gen-form"
-        action="{% url 'submit' %}"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <label for="file" class="btn-upload">
-          &nbsp; <i class="fas fa-cloud-upload-alt"></i> &nbsp; upload
-          image</label
-        >
-        <input
-          type="file"
-          class="file"
-          id="file"
-          style="display: none"
-          name="image"
-        />
-        <div class="image-preview" id="imagePreview">
-          <img src="" alt="" class="image-preview--image" />
-          <span id="previewText" class="image-preview--text"
-            >No file chosen</span
+  <body>
+    {% if user.is_authenticated %}
+    <div class="container">
+      <nav class="navbar" id="header">
+        <div class="account">
+          <a href="{% url 'skin_app:profile'%}" class="profilebtn">
+            <i class="fas fa-user-alt"></i> profile</a
+          >
+          <a href="{% url 'skin_app:logout'%}" class="logoutbtn">
+            logout <i class="fas fa-sign-out-alt"></i
+          ></a>
+        </div>
+      </nav>
+      <section class="app-container" id="form-container">
+        <div class="gen-header mb-sm">
+          <marquee behavior="scroll" direction="">
+            <h1>skin cancer detection app</h1></marquee
           >
         </div>
-        <label
-          style="text-align: center; font-weight: 700"
-          for="submit"
-          class="btn submit"
-          ><i class="fas fa-lens"></i> scan</label
+        <form
+          class="gen-form"
+          action="{% url 'skin_app:submit' %}"
+          method="POST"
+          enctype="multipart/form-data"
         >
-        <input
-          class="btn mb-sm"
-          id="submit"
-          type="submit"
-          style="display: none"
-          value="Submit"
-        />
-      </form>
+          <label id="upload" for="file" class="btn-upload">
+            &nbsp; <i class="fas fa-cloud-upload-alt"></i> &nbsp; upload
+            image</label
+          >
+          <input
+            type="file"
+            class="file"
+            id="file"
+            style="display: none"
+            name="image"
+          />
+          <div class="image-preview" id="imagePreview">
+            <img src="" alt="" class="image-preview--image" />
+            <span id="previewText" class="image-preview--text"
+              >No file chosen</span
+            >
+          </div>
+          <label
+            style="text-align: center; font-weight: 700"
+            for="submit"
+            class="btn submit"
+            ><i class="fas fa-lens"></i> scan</label
+          >
+          <input
+            class="btn mb-sm"
+            id="submit"
+            type="submit"
+            style="display: none"
+            value="Submit"
+          />
+        </form>
+      </section>
+      <footer class="footer">
+        <ul class="nav">
+          <li class="nav__item">
+            <a
+              href="https://www.cancer.org/cancer/melanoma-skin-cancer/about/what-is-melanoma.html"
+              class="nav__link"
+              >Melanoma</a
+            >
+          </li>
+          <li class="nav__item">
+            <a
+              href="https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
+              class="nav__link"
+              >basal cell carcinoma</a
+            >
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">Naevus</a>
+          </li>
+        </ul>
+        <p class="copyright">
+          Copyright &copy; <span id="date"></span> by <em>KJ. Ndichu</em> All
+          rights reserved
+        </p>
+      </footer>
     </div>
-    <footer class="footer">
-      <ul class="nav">
-        <li class="nav__item">
-          <a
-            href="https://www.cancer.org/cancer/melanoma-skin-cancer/about/what-is-melanoma.html"
-            class="nav__link"
-            >Melanoma</a
-          >
-        </li>
-        <li class="nav__item">
-          <a
-            href="https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
-            class="nav__link"
-            >basal cell carcinoma</a
-          >
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">Naevus</a>
-        </li>
-      </ul>
-      <p class="copyright">
-        &copy; Copyright 2021 by <em>Dermatologist_AI.</em> All rights reserved
-      </p>
-    </footer>
 
-    <script>
-      const header = document.getElementById("header");
-      const formContainer = document.getElementById("form-container");
-      const inpFile = formContainer.querySelector(".file");
-      const imagePreview = formContainer.querySelector(".image-preview");
-      const image = imagePreview.querySelector(".image-preview--image");
-      const text = imagePreview.querySelector(".image-preview--text");
-      const submit = formContainer.querySelector(".submit");
+    {% else %}
+    <div class="container">
+      <div class="app-container">
+        <h2>Make sure you login</h2>
+        <a href="{% url 'skin_app:login' %}">here</a>
+      </div>
+    </div>
+    {% endif %}
 
-      const file = null;
-      if (!file) {
-        submit.style.display = "none";
-        formContainer.style.height = "70vh";
-      }
-
-      //file upload
-      inpFile.addEventListener("change", function () {
-        const file = this.files[0];
-
-        if (file) {
-          const reader = new FileReader();
-          text.style.display = "none";
-          image.style.display = "block";
-          submit.style.display = "";
-          formContainer.style.height = "90vh";
-          formContainer.style.marginBottom = "3rem";
-
-          reader.addEventListener("load", function () {
-            image.setAttribute("src", this.result);
-            image.style.width = "100%";
-          });
-
-          reader.readAsDataURL(file);
-        }
-      });
-
-      //stcky header
-      window.onscroll = function () {
-        scroll();
-      };
-      let sticky = header.offsetTop;
-      function scroll() {
-        if (window.pageYOffset > sticky) {
-          header.classList.add("sticky");
-        } else {
-          header.classList.remove("sticky");
-        }
-      }
-    </script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
